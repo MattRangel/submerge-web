@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="style.css">
+<script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/jschardet/1.4.1/jschardet.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+
+<h3>Upload Master and Submaster SRT files:</h3>
+<input id="master-file" type="file" accept=".srt">
+<input id="submaster-file" type="file" accept=".srt">
+<input type="button" value="Download Converted File" id="download-btn" style="display: none;" onclick="downloadFile()">
+<a id="dwnld"></a>
+
+<br><br><input type="button" id="togOpt" value="More Options" onclick="toggleOptions();">
+<div id="moreOptions" style="display: none">
+<form id="UsrOptions">
+<h4>Timing Adjustments:</h4>
+<lable for="UsrAutoAdj">Auto Adjust Time:</lable>
+<input type="checkbox" id="UsrAutoAdj" checked><br>
+<lable for="TimeDiffMax">─Time Differece Threshold Centiseconds: (100 = 1 sec)</lable>
+<input id="TimeDiffMax" type="number" value=100><br>
+<lable for="UsrSelfAdj">Manual Shift Submaster:</lable>
+<input type="checkbox" id="UsrSelfAdj"><br>
+<lable for="usrTimeShift">─Shift by: (100 = 1 sec)</lable>
+<input id="usrTimeShift" type="number" value=0><br>
+
+
+<h4>Font Size (px):</h4>
+<input id="UsrFontsize" type="number" value=15>
+
+<h4>Primary Color:</h4>
+<lable for="UsrMastPrimColor">Master: </lable>
+<input type="color" id="UsrMastPrimColor" name="favcolor" value="#ffffff">
+<lable for="UsrSubMastPrimColor">Submaster: </lable>
+<input type="color" id="UsrSubMastPrimColor" name="favcolor" value="#ffffff">
+
+<h4>Outline/Solid Box Color:</h4>
+<lable for="UsrMastOutColor">Master: </lable>
+<input type="color" id="UsrMastOutColor" name="favcolor" value="#000000">
+<lable for="UsrSubMastOutColor">Submaster: </lable>
+<input type="color" id="UsrSubMastOutColor" name="favcolor" value="#000000"><br>
+<lable for="UsrOutOpacity">Opacity (%): </lable>
+<input id="UsrOutOpacity" type="number" value=100 min=0 max=100>
+
+<h4>Shadow Color:</h4>
+<lable for="UsrMastShdwColor">Master: </lable>
+<input type="color" id="UsrMastShdwColor" name="favcolor" value="#000020">
+<lable for="UsrSubMastShdwColor">Submaster: </lable>
+<input type="color" id="UsrSubMastShdwColor" name="favcolor" value="#000020"><br>
+<lable for="UsrShdwOpacity">Opacity (%): </lable>
+<input id="UsrShdwOpacity" type="number" value=100 min=0 max=100>
+
+<h4>Border Style:</h4>
+<lable for="UsrTxtOut">Outline and Shadow</lable>
+<input type="radio" id="UsrTxtOut" name="UsrBordStyle" checked><br>
+<lable for="UsrTxtBox">Solid Box</lable>
+<input type="radio" id="UsrTxtBox" name="UsrBordStyle">
+
+<h4>Outline Width:</h4>
+<select id="UsrOutWidth">
+<option value ="0">0</option>
+<option value ="1" selected>1</option>
+<option value ="2">2</option>
+<option value ="3">3</option>
+<option value ="4">4</option>
+</select>
+
+<h4>Shadow Size:</h4>
+<select id="UsrShdwSize">
+<option value="0" selected>0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+
+<h4>Subtitle Screen Locations:</h4>
+<lable for="MastLoc">Master: </lable>
+<select id="MastLoc">
+<option value="8">Top</option>
+<option value="2" selected>Bottom</option>
+</select><br>
+<lable for="SubMastLoc">Submaster: </lable>
+<select id="SubMastLoc">
+<option value="8" selected>Top</option>
+<option value="2">Bottom</option>
+</select><br>
+
+<h4>Select File Encoding Types:</h4>
+<lable for="autoDetect">Auto Detect?: </lable>
+<input type="checkbox" id="autoDetect" checked><br>
+<lable for="mastEncoding">Master: </lable>
+<input id="mastEncoding" type="text" value=""><br>
+<lable for="subMastEncoding">Submaster: </lable>
+<input id="subMastEncoding" type="text" value="">
+
+</form>
+</div>
+
+<br><br><input type="button" value="Convert File" onclick="readFilePt1();">
+
+</body>
+</html>
